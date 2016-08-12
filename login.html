@@ -1,0 +1,185 @@
+<html data-ng-app="newApp">
+<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-route.js"></script>
+
+<!-- J-query -->
+<link rel="stylesheet" type="text/css" href="css/jquery-ui.css">
+<script type="text/javascript" src="script/jquery.min.js"></script>
+
+<!-- Bootstrap Latest compiled and minified CSS -->
+<link rel="stylesheet" type="text/css" href="css/bootstrap.css">
+
+<!-- Bootstrap Optional theme -->
+<link rel="stylesheet" type="text/css" href="css/bootstrap-theme.css">
+<link rel="stylesheet" type="text/css" href="css/bootstrap-theme.min.css">
+
+<!-- Bootstrap Latest compiled and minified JavaScript -->
+<script type="text/javascript" src="script/bootstrap.js"></script>
+<script type="text/javascript" src="script/bootstrap.min.js"></script>
+
+<link href="css/style.css" rel="stylesheet" type="text/css">
+<script type="text/javascript" src="script/script.js"></script>
+
+<title>Login</title>
+
+<body data-ng-controller="datacontroller">
+	<div class="">
+<div class="form-group col-lg-12 headerbg">My Application</div>
+
+    <div class="container-fluid">
+		<div class="row">
+    	<div class="col-lg-12">
+    <div class="col-lg-4"></div>
+	<div class="col-lg-4">            
+    	<div class="form-group mainlogin">
+    	<div class="loginbox">
+        	<form name="myForm" novalidate>
+    <p>Username:<br>
+      <input type="text" class="form-control" name="user" ng-model="user" required>
+      <span style="color:red" ng-show="myForm.user.$dirty && myForm.user.$invalid">
+      <span ng-show="myForm.user.$error.required">Username is required.</span>
+      </span>
+    </p>
+    
+    <p>Email:<br>
+      <input type="email" class="form-control" name="email" ng-model="email" required>
+      <span style="color:red" ng-show="myForm.email.$dirty && myForm.email.$invalid">
+      <span ng-show="myForm.email.$error.required">Email is required.</span>
+      <span ng-show="myForm.email.$error.email">Invalid email address.</span>
+      </span>
+    </p>
+    
+    <p>
+      <input type="submit" class="btn btn-primary" placeholder="Login"
+      ng-disabled="myForm.user.$dirty && myForm.user.$invalid ||
+      myForm.email.$dirty && myForm.email.$invalid">
+    </p>
+    
+    </form>
+    	</div>
+
+    </div>
+    </div>
+    <div class="col-lg-4"></div>
+    </div>
+    </div>    
+	</div>    
+	
+    <div class="form-group col-lg-12 footerbg">
+        Footer
+    </div>
+    </div>  
+</body>
+</html>
+
+
+
+
+
+
+
+
+<!--
+<html>
+
+<head>
+
+<title>List View</title>
+
+<!-- Angular JS -->
+<!--<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>-->
+
+<!-- Bootstrap Latest compiled and minified CSS -->
+<!--<link rel="stylesheet" type="text/css" href="css/bootstrap.css">-->
+
+<!-- Bootstrap Optional theme -->
+<!--<link rel="stylesheet" type="text/css" href="css/bootstrap-theme.css">
+<link rel="stylesheet" type="text/css" href="css/bootstrap-theme.min.css">-->
+
+<!-- Bootstrap Latest compiled and minified JavaScript -->
+<!--<script type="text/javascript" src="script/bootstrap.js"></script>
+<script type="text/javascript" src="script/bootstrap.min.js"></script>
+
+<link href="css/style.css" rel="stylesheet" type="text/css">
+<script type="text/javascript" src="script/script.js"></script>
+
+</head>
+
+<body>
+    <div data-ng-app = "mainApp" data-ng-controller = "datacontroller">
+        <div class="container-fluid">
+            <div class="row">
+        <div class="form-group col-lg-12 headerbg">My Application</div>
+        </div>
+            <div class="row">
+            <div class="col-lg-12">
+                <label>Search:</label>
+                <input type = "text" class="form-control" data-ng-model = "search" placeholder = "Search here">
+            </div>
+           	</div>
+        <hr/>
+       
+        <div class="row">
+        	<div class="col-lg-12">
+          		<table class="table">
+          <tr>
+                <td>Name</td>
+                <td>Age</td>
+                <td>Sex</td>
+                <td>DOB</td>
+                <td>Place</td>                                               
+          </tr>
+              <tr data-ng-repeat="detail in data | filter:search">
+                  <td>{{detail.name}}</td>
+                  <td>{{detail.age}}</td>
+                  <td>{{detail.sex}}</td>
+                  <td>{{detail.dob}}</td>
+                  <td>{{detail.place}}</td>                                    
+              </tr>
+          </table>
+              <button value="add" class="btn btn-primary glyphicon glyphicon-plus">&nbsp;ADD</button>
+              <button value="edit" class="btn btn-primary glyphicon glyphicon-edit">&nbsp;EDIT</button>
+          	</div>
+            </div>
+        </div>
+    </div>
+
+<script>
+var app = angular.module('mainApp', []);
+
+app.config(function($routeProvider) {
+    $routeProvider
+    .when("/", {
+        templateUrl : "listview.html",
+		controller : "datacontroller"
+    })
+    .when("/add", {
+        templateUrl : "adddetails.html",
+		controller : "addcontroller"
+    })
+    .when("/edit", {
+        templateUrl : "adddetails.html",
+		controller : "editcontroller"
+    })
+    .otherwise.redirecTo("/", {
+        templateUrl : "angular.html"
+    });
+});
+
+app.controller('datacontroller', function($scope) {
+
+	$scope.data = [
+			{ name:'James Bond', age: 40, sex: 'Male', dob: '1/1/1975', place: 'Beverly Hills'},
+			{ name:'Steve Waugh', age: 55, sex: 'Male', dob: '12/31/1960', place: 'Beverly Hills'},
+			{ name:'Borris Beker', age: 45, sex: 'Male', dob: '5/30/1970', place: 'Beverly Hills' },
+			{ name:'Pierce Brosnan', age: 65, sex: 'Male', dob: '3/18/1950', place: 'Beverly Hills'},
+			{ name:'Julia Roberts', age: 55, sex: 'Female', dob: '8/23/1960', place: 'Beverly Hills'},
+			{ name:'Katherin Jetajohns', age: 45, sex: 'Female', dob: '10/8/1970', place: 'Beverly Hills'},
+			{ name:'Kate Winslet', age: 40, sex: 'Female', dob: '9/9/1975', place: 'Beverly Hills'}									
+	];
+	
+	
+});
+</script>
+</body>
+</html> -->

@@ -1,0 +1,32 @@
+<div class="container-fluid">                
+        <div class="row">
+            <div class="col-lg-12">
+                <label>Search:</label>
+                <input type = "text" class="form-control" data-ng-model = "search" placeholder = "Search here">
+            </div>
+           	</div>
+       
+        <div class="row">
+        <div class="col-lg-12">
+          <table class="table">
+              <tr>
+                    <td>Name</td>
+                    <td>Age</td>
+                    <td>Sex</td>
+                    <td>DOB</td>
+                    <td>Place</td>                                               
+              </tr>
+              <tr data-ng-repeat="detail in data | filter:search">
+                  <td>{{detail.name}}</td>
+                  <td>{{detail.age}}</td>
+                  <td>{{detail.sex}}</td>
+                  <td>{{detail.dob}}</td>
+                  <td>{{detail.place}}</td>                                    
+              </tr>
+          </table>
+              <button id="addbtn" value="add" class="btn btn-primary glyphicon glyphicon-plus">&nbsp;ADD</button>
+              <button id="editbtn" value="edit" class="btn btn-primary glyphicon glyphicon-edit">&nbsp;EDIT</button>
+          	</div>
+            </div>        
+    </div>
+</div>
